@@ -1,7 +1,17 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+  "dependencyDashboard": true,
+  "prBodyDefinitions": {
+    "Age": "[![age](https://developer-platform-dev.mend.io/api/mc/badges/age/{{datasource}}/{{replace '/' '%2f' depName}}/{{{toVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)",
+    "Adoption": "[![adoption](https://developer-platform-dev.mend.io/api/mc/badges/adoption/{{datasource}}/{{replace '/' '%2f' depName}}/{{{toVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)",
+    "Passing": "[![passing](https://developer-platform-dev.mend.io/api/mc/badges/compatibility/{{datasource}}/{{replace '/' '%2f' depName}}/{{{fromVersion}}}/{{{toVersion}}})](https://docs.renovatebot.com/merge-confidence/)",
+    "Confidence": "[![confidence](https://developer-platform-dev.mend.io/api/mc/badges/confidence/{{datasource}}/{{replace '/' '%2f' depName}}/{{{fromVersion}}}/{{{toVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)"
+  },
+  "packageRules": [
+    {
+      "datasources": ["maven", "npm", "pypi"],
+      "updateTypes": ["patch", "minor", "major"],
+      "prBodyColumns": ["Package", "Change", "Age", "Adoption", "Passing", "Confidence"]
+    }
   ]
 }
 
